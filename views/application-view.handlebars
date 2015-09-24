@@ -1,0 +1,23 @@
+<p>{{ app.description }}</p>
+
+<div class="columns">
+  <div class="one-half">
+    <dl class="form">
+      <dt><label>Access Token</label></dt>
+      <dd><input type="text" class="input-block" value="{{ app.token }}" readonly></dd>
+    </dl>
+  </div>
+</div>
+
+<h2>Events</h2>
+<div class="blankslate">
+  <span class="mega-octicon octicon-alert"></span>
+  <h3>No events recorded</h3>
+  <p>Your application did not report any events to meerkat. Make sure it is setup correctly.</p>
+</div>
+
+<form action="/application/{{app.name}}/delete" method="post">
+  <div class="form-actions">
+    <input type="submit" class="btn btn-danger" value="Delete application" /
+  </div>
+</form>

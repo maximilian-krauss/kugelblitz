@@ -1,0 +1,19 @@
+{
+  "name": "meerkat",
+  "version": "0.0.1",
+  "authors": [
+    "Maximilian Krauss <max@krauss.io>"
+  ],
+  "description": "App logging, much wow",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "primer-css": "~2.3.3"
+  }
+}

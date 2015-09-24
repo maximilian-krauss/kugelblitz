@@ -1,0 +1,32 @@
+{{> error-view }}
+
+<div class="columns">
+  <div class="one-half column centered">
+    <form action="/application/new" method="post">
+      <dl class="form">
+        <dt><label>Name</label></dt>
+        <dd><input required name="name" type="text" value=""></dd>
+      </dl>
+
+      <dl class="form">
+        <dt><label>Display name</label></dt>
+        <dd><input required name="displayName" type="text" value=""></dd>
+      </dl>
+
+      <dl class="form">
+        <dt><label>Description</label></dt>
+        <dd><input required name="description" type="text" value=""></dd>
+      </dl>
+
+      <dl class="form">
+        <dt><label>Url</label></dt>
+        <dd><input required name="url" type="text" value=""></dd>
+      </dl>
+
+      <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Create" />
+        <a class="btn" href="/">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

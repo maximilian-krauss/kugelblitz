@@ -1,0 +1,31 @@
+<div class="columns">
+  <div class="one-half">
+    <div class="btn-group">
+      <a class="btn btn-primary" href="./application/new">
+        <span class="octicon octicon-plus"></span>
+        New application
+      </a>
+      <a class="btn" href="/logout">Logout</a>
+    </div>
+  </div>
+</div>
+
+{{#if applications}}
+  <div class="columns">
+  {{#each applications}}
+    <div class="five-fiths">
+      <h3><a href="/application/{{name}}">{{ displayName }}</a></h3>
+    </div>
+  {{/each}}
+  </div>
+{{else}}
+  <div class="columns">
+    <div class="five-fifths">
+      <div class="blankslate">
+        <span class="mega-octicon octicon-pulse"></span>
+        <h3>No applications available</h3>
+        <p>You haven't created any applications yet. Click <a href="./application/new">here</a> to create one.</p>
+      </div>
+    </div>
+  </div>
+{{/if}}
