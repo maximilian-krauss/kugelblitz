@@ -1,0 +1,27 @@
+{
+  "assets": {
+    "base.css": "base-418cc8019c93c9354579bcc406d8dd43.css",
+    "combined.css": "combined-756deea4cde6bb0e59a34d197a004018.css",
+    "home.css": "home-6fdb3054769d2a64b0b8a28d08e92af4.css"
+  },
+  "files": {
+    "base-418cc8019c93c9354579bcc406d8dd43.css": {
+      "logical_path": "base.css",
+      "mtime": "2015-09-27T11:09:56.000Z",
+      "size": 232,
+      "digest": "418cc8019c93c9354579bcc406d8dd43"
+    },
+    "combined-756deea4cde6bb0e59a34d197a004018.css": {
+      "logical_path": "combined.css",
+      "mtime": "2015-09-27T11:36:52.000Z",
+      "size": 444,
+      "digest": "756deea4cde6bb0e59a34d197a004018"
+    },
+    "home-6fdb3054769d2a64b0b8a28d08e92af4.css": {
+      "logical_path": "home.css",
+      "mtime": "2015-09-27T11:36:52.000Z",
+      "size": 212,
+      "digest": "6fdb3054769d2a64b0b8a28d08e92af4"
+    }
+  }
+}

@@ -4,7 +4,7 @@
     <title>{{ slug }} &mdash; {{ title }}</title>
     <link rel="stylesheet" href="/static/vendor/primer-css/css/primer.css">
     <link rel="stylesheet" href="/static/vendor/octicons/octicons/octicons.css">
-    {{{ css 'base' }}}
+    {{{ css 'combined' }}}
   </head>
   <body>
     <div class="header">
@@ -13,10 +13,16 @@
       </div>
     </div>
     <div class="container">
-      <div class="title">
-        <p class="lead">{{ slug }}</p>
+      <div class="columns">
+        <div class="four-fifths centered">
+          <div class="title">
+            <p class="lead">{{ slug }}</p>
+          </div>
+          <div class="body-content">
+            {{{ body }}}
+          </div>
+        </div>
       </div>
-      {{{ body }}}
     </div>
   </body>
 </html>

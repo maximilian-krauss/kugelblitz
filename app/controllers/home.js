@@ -17,7 +17,10 @@ module.exports = function() {
 
         res.render('home', {
           slug: 'Dashboard',
-          applications: applications
+          applications: _(applications)
+            .chain()
+            .map((a) => { return a.toViewModel() })
+            .value()
         });
       });
   });
