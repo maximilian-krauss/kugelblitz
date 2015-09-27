@@ -26,6 +26,7 @@ var models = all('./app/models'),
 
 let hbs = exphbs.create({
   defaultLayout: 'main',
+
   partialsDir: 'views/partials/',
   helpers: {
     title: () => {
@@ -71,6 +72,12 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('etag', 'strong');
 
+if(config.production) {
+  app.set('env', settings.env);
+  app.set('json spaces', undefined);
+  app.enable('view cache');
+}
+
 app.use(require('connect-assets')({
   paths: [
     'media/js',
@@ -78,6 +85,8 @@ app.use(require('connect-assets')({
   ],
   helperContext: bundles,
   build: true,
+  compress: config.production,
+  gzip: config.production,
   fingerprinting: true,
   servePath: 'media/dist'
 }));

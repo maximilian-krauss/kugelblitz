@@ -8,6 +8,7 @@ class Configuration {
     this._allowSignup = process.env[`${environment_token}_ALLOW_SIGNUP`] === 'true';
     this._sessionSecret = process.env[`${environment_token}_SESSION_SECRET`];
     this._cookieSecret = process.env[`${environment_token}_COOKIE_SECRET`];
+    this._production = process.env.NODE_ENV === 'production';
   }
 
   get mongoUri() {
@@ -24,6 +25,10 @@ class Configuration {
 
   get cookieSecret() {
     return this._cookieSecret;
+  }
+
+  get production() {
+    return this._production;
   }
 
 }

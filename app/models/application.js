@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
     validate = require('mongoose-validate'),
     crypto = require('crypto'),
+    moment = require('moment'),
     ObjectId = mongoose.Schema.Types.ObjectId;
 
 var ApplicationSchema = new mongoose.Schema({
@@ -70,5 +71,33 @@ ApplicationSchema.pre('save', function(next) {
     next();
   });
 });
+
+ApplicationSchema.virtuals.status = function() {
+  let app = this;
+  if(!app.lastHeartbeat) {
+    return 'dead';
+  }
+
+}
+
+function toTextDate(date) {
+  return date
+    ? moment(date).fromNow()
+    : 'never';
+}
+
+ApplicationSchema.methods.toViewModel = function() {
+  let app = this;
+
+  return {
+    name: app.name,
+    displayName: app.displayName,
+    description: app.description,
+    lastError: app.lastError,
+    lastErrorText: toTextDate(app.lastError),
+    lastHeartbeat: app.lastHeartbeat,
+    lastHeartbeatText: toTextDate(app.lastHeartbeat)
+  };
+};
 
 module.exports = mongoose.model('Application', ApplicationSchema);

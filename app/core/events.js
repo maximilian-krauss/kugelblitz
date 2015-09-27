@@ -8,8 +8,12 @@ class EventManager {
     this._event = mongoose.model('Event');
   }
 
+  /*
+    requestBody:
+      type, payload
+  */
   create(appId, requestBody, cb) {
-    
+    cb(new Error('Not implemented yet'));
   }
 }
 
