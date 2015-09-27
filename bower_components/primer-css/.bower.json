@@ -27,6 +27,5 @@
   },
   "_source": "git://github.com/primer/primer.git",
   "_target": "~2.3.3",
-  "_originalSource": "primer-css",
-  "_direct": true
+  "_originalSource": "primer-css"
 }

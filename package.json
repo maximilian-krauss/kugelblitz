@@ -4,7 +4,9 @@
   "description": "App logging and stuff",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "node ./node_modules/bower/bin/bower install -F -p"
+
   },
   "repository": {
     "type": "git",
@@ -12,7 +14,7 @@
   },
   "author": "Maximilian Krauß <max@krauss.io>",
   "license": "MIT",
-  "engines" : { "node" : ">=4.1" },
+  "engines" : { "node" : ">=4.1", "npm" : ">= 3.3" },
   "bugs": {
     "url": "https://github.com/maximilian-krauss/meerkat/issues"
   },
