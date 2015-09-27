@@ -14,7 +14,7 @@
   },
   "author": "Maximilian Krauß <max@krauss.io>",
   "license": "MIT",
-  "engines" : { "node" : ">=4.1", "npm" : ">= 3.3" },
+  "engines" : { "node" : ">=4.1", "npm" : ">= 3.1" },
   "bugs": {
     "url": "https://github.com/maximilian-krauss/meerkat/issues"
   },
