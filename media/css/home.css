@@ -12,6 +12,10 @@ ul.applications h3 {
   line-height: 5px;
 }
 
+ul.applications span.state {
+  font-size: 12px;
+}
+
 ul.applications span.sub-line {
   color: #aaa;
   margin-right: 5px;

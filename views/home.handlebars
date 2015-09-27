@@ -14,7 +14,11 @@
   <ul class="applications">
   {{#each applications}}
     <li>
-      <h3><a href="/application/{{name}}">{{ displayName }}</a></h3>
+      <h3>
+        <span class="state {{ status.cssClass }}">{{ status.text }}</span>
+
+        <a href="/application/{{name}}">{{ displayName }}</a>
+      </h3>
       <p class="description">{{{ description }}}</p>
       <p>
         <span class="sub-line last-heartbeat" title="{{ lastHeartbeat }}">

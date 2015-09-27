@@ -72,12 +72,27 @@ ApplicationSchema.pre('save', function(next) {
   });
 });
 
-ApplicationSchema.virtuals.status = function() {
-  let app = this;
+ApplicationSchema.methods.status = function() {
+  let app = this,
+      dead = { text: 'dead', cssClass: 'state-closed' },
+      walkingDead = { text: 'walking dead', cssClass: 'state-merged' },
+      healthy = { text: 'healthy', cssClass: 'state-open' };
+
+
   if(!app.lastHeartbeat) {
-    return 'dead';
+    return dead;
   }
 
+  const hoursSinceLastHeartbeat = moment().diff(app.lastHeartbeat, 'hours');
+  if(hoursSinceLastHeartbeat >= 0) {
+    return healthy;
+  }
+
+  if(hoursSinceLastHeartbeat >= 2) {
+    return walkingDead;
+  }
+
+  return dead;
 }
 
 function toTextDate(date) {
@@ -96,7 +111,8 @@ ApplicationSchema.methods.toViewModel = function() {
     lastError: app.lastError,
     lastErrorText: toTextDate(app.lastError),
     lastHeartbeat: app.lastHeartbeat,
-    lastHeartbeatText: toTextDate(app.lastHeartbeat)
+    lastHeartbeatText: toTextDate(app.lastHeartbeat),
+    status: app.status()
   };
 };
 
