@@ -12,14 +12,15 @@
   },
   "author": "Maximilian Krauß <max@krauss.io>",
   "license": "MIT",
+  "engines" : { "node" : ">=4.1" },
   "bugs": {
     "url": "https://github.com/maximilian-krauss/meerkat/issues"
   },
   "homepage": "https://github.com/maximilian-krauss/meerkat#readme",
   "dependencies": {
-    "bcryptjs": "^2.2.2",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.0",
-    "bower": "^1.5.2",
+    "bower": "^1.5.3",
     "colors": "^1.1.2",
     "compression": "^1.5.2",
     "connect-assets": "^5.0.1",
