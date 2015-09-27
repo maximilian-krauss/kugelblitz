@@ -17,3 +17,7 @@ div.header {
   color: #333;
   text-decoration: none;
 }
+
+.header h1 a span {
+  line-height: 0;
+}
