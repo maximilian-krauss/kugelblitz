@@ -84,7 +84,8 @@ ApplicationSchema.methods.status = function() {
   }
 
   const hoursSinceLastHeartbeat = moment().diff(app.lastHeartbeat, 'hours');
-  if(hoursSinceLastHeartbeat >= 0) {
+
+  if(hoursSinceLastHeartbeat <= 0) {
     return healthy;
   }
 
@@ -112,7 +113,8 @@ ApplicationSchema.methods.toViewModel = function() {
     lastErrorText: toTextDate(app.lastError),
     lastHeartbeat: app.lastHeartbeat,
     lastHeartbeatText: toTextDate(app.lastHeartbeat),
-    status: app.status()
+    status: app.status(),
+    url: app.url
   };
 };
 
