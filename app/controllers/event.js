@@ -33,9 +33,7 @@ module.exports = function() {
           return res.status(400).send();
         }
 
-        res
-          .status(201)
-          .send({ reported: true });
+        res.status(201).send({ reported: true });
       });
 
     });

@@ -21,3 +21,7 @@ div.header {
 .header h1 a span {
   line-height: 0;
 }
+
+.full-width {
+  width: 100%;
+}

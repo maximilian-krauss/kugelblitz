@@ -1,19 +1,31 @@
 <p>{{ app.description }}</p>
 
 <div class="columns">
-  <div class="one-half">
-    <dl class="form">
-      <dt><label>Access Token</label></dt>
-      <dd><input type="text" class="input-block" value="{{ app.token }}" readonly></dd>
-    </dl>
+  <div class="one-fifth column">
+    {{> nav-application activeItem="home" app=app }}
   </div>
-</div>
+  <div class="four-fifths column">
+    <div class="columns">
 
-<h2>Events</h2>
-<div class="blankslate">
-  <span class="mega-octicon octicon-alert"></span>
-  <h3>No events recorded</h3>
-  <p>Your application did not report any events to meerkat. Make sure it is setup correctly.</p>
+      <div class="full-width column">
+        <h2>Facts</h2>
+        <dl class="form">
+          <dt><label>Access Token</label></dt>
+          <dd><input type="text" style="width: 100%;" class="input-block full-width" value="{{ app.token }}" readonly></dd>
+        </dl>
+      </div>
+
+      <div class="full-width column">
+        <h2>Events</h2>
+        <div class="blankslate">
+          <span class="mega-octicon octicon-alert"></span>
+          <h3>No events recorded</h3>
+          <p>Your application did not report any events to meerkat. Make sure it is setup correctly.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <form action="/application/{{app.name}}/delete" method="post">

@@ -53,6 +53,14 @@ var ApplicationSchema = new mongoose.Schema({
     type: Date,
     default: null
   },
+  warnRetentionInMinutes: {
+    type: Number,
+    default: 60
+  },
+  deadRetentionInMinutes: {
+    type: Number,
+    default: 180
+  },
   events: [{
     type: ObjectId,
     ref: 'Event'
@@ -89,7 +97,7 @@ ApplicationSchema.methods.status = function() {
     return healthy;
   }
 
-  if(hoursSinceLastHeartbeat >= 2) {
+  if(hoursSinceLastHeartbeat >= 2 && hoursSinceLastHeartbeat < 6) {
     return walkingDead;
   }
 

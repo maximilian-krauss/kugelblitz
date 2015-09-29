@@ -1,0 +1,17 @@
+<nav class="menu">
+  <a id="nav-app-home" class="menu-item" href="/application/{{app.name}}">
+    <span class="octicon octicon-squirrel"></span>
+    Overview
+  </a>
+  <a id="nav-app-settings" class="menu-item" href="/application/{{app.name}}/settings">
+    <span class="octicon octicon-tools"></span>
+    Settings
+  </a>
+</nav>
+
+<script type="text/javascript">
+  (function() {
+    var element = document.getElementById('nav-app-{{activeItem}}');
+    element.className = element.className + " selected";
+  })();
+</script>
