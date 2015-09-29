@@ -53,6 +53,14 @@ var ApplicationSchema = new mongoose.Schema({
     type: Date,
     default: null
   },
+  warnRetentionInMinutes: {
+    type: Number,
+    default: 60
+  },
+  deadRetentionInMinutes: {
+    type: Number,
+    default: 180
+  },
   events: [{
     type: ObjectId,
     ref: 'Event'
@@ -84,11 +92,12 @@ ApplicationSchema.methods.status = function() {
   }
 
   const hoursSinceLastHeartbeat = moment().diff(app.lastHeartbeat, 'hours');
-  if(hoursSinceLastHeartbeat >= 0) {
+
+  if(hoursSinceLastHeartbeat <= 0) {
     return healthy;
   }
 
-  if(hoursSinceLastHeartbeat >= 2) {
+  if(hoursSinceLastHeartbeat >= 2 && hoursSinceLastHeartbeat < 6) {
     return walkingDead;
   }
 
@@ -112,7 +121,8 @@ ApplicationSchema.methods.toViewModel = function() {
     lastErrorText: toTextDate(app.lastError),
     lastHeartbeat: app.lastHeartbeat,
     lastHeartbeatText: toTextDate(app.lastHeartbeat),
-    status: app.status()
+    status: app.status(),
+    url: app.url
   };
 };
 

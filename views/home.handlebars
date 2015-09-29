@@ -5,7 +5,13 @@
         <span class="octicon octicon-plus"></span>
         New application
       </a>
-      <a class="btn btn-sm" href="/logout">Logout</a>
+      <a class="btn btn-sm" href="#">
+        Change password
+      </a>
+      <a class="btn btn-sm" href="/logout">
+        <span class="octicon octicon-sign-out"></span>
+        Logout
+      </a>
     </div>
   </div>
 </div>
@@ -18,11 +24,11 @@
         <span class="state {{ status.cssClass }}">{{ status.text }}</span>
 
         <a href="/application/{{name}}">{{ displayName }}</a>
+        <a href="{{ url }}" target="_blank"><span class="octicon octicon-link-external"></span></a>
       </h3>
-      <p class="description">{{{ description }}}</p>
       <p>
         <span class="sub-line last-heartbeat" title="{{ lastHeartbeat }}">
-          <span class="octicon octicon-radio-tower"></span>
+          <span class="octicon octicon-pulse"></span>
           Last heartbeat: {{ lastHeartbeatText }}
         </span>
         <span class="sub-line last-error" title="{{ lastError }}">
