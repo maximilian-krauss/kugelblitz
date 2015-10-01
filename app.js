@@ -117,15 +117,24 @@ app.use('/static/vendor', express.static(__dirname + '/bower_components', {
     maxAge: '364d',
 }));
 
-_.each(controllers, function(controller) {
-  controller.apply({
-    app: app,
-    core: core,
-    config: config,
-    passport: passport,
-    middlewares: middlewares
-  });
-});
+function injectDependenciesInto(items) {
+  _.each(items, function(controller) {
+    if(typeof controller === 'object') {
+      injectDependenciesInto(controller);
+      return;
+    }
+
+    controller.apply({
+      app: app,
+      core: core,
+      config: config,
+      passport: passport,
+      middlewares: middlewares
+    });
+  }.bind(this));
+}
+
+injectDependenciesInto(controllers);
 
 app.get('*', (req, res) => {
   res.status(404).send({error: 'Not found'});
