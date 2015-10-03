@@ -22,6 +22,25 @@ class ApplicationManager {
     application.save(cb);
   }
 
+  /*
+    requestBody:
+      name, displayName, description, url, warnRetentionInMinutes, deadRetentionInMinutes
+  */
+  update(userId, requestBody, cb) {
+    var query = { owner: userId, name: requestBody.name };
+
+    this._application.update(query, {
+        displayName: requestBody.displayName,
+        description: requestBody.description,
+        url: requestBody.url,
+        warnRetentionInMinutes: requestBody.warnRetentionInMinutes,
+        deadRetentionInMinutes: requestBody.deadRetentionInMinutes
+      },
+      { multi: false },
+      cb
+    );
+  }
+
   delete(userId, name, cb) {
     this._application
       .find({ owner: userId, name: name })

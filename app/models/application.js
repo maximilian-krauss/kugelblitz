@@ -91,13 +91,15 @@ ApplicationSchema.methods.status = function() {
     return dead;
   }
 
-  const hoursSinceLastHeartbeat = moment().diff(app.lastHeartbeat, 'hours');
+  const minutesSinceLastHeartbeat = moment().diff(app.lastHeartbeat, 'minutes');
 
-  if(hoursSinceLastHeartbeat <= 0) {
+  if(minutesSinceLastHeartbeat < app.warnRetentionInMinutes) {
     return healthy;
   }
 
-  if(hoursSinceLastHeartbeat >= 2 && hoursSinceLastHeartbeat < 6) {
+  if(minutesSinceLastHeartbeat >= app.warnRetentionInMinutes
+    && minutesSinceLastHeartbeat < app.deadRetentionInMinutes)
+  {
     return walkingDead;
   }
 
@@ -121,6 +123,8 @@ ApplicationSchema.methods.toViewModel = function() {
     lastErrorText: toTextDate(app.lastError),
     lastHeartbeat: app.lastHeartbeat,
     lastHeartbeatText: toTextDate(app.lastHeartbeat),
+    warnRetentionInMinutes: app.warnRetentionInMinutes,
+    deadRetentionInMinutes: app.deadRetentionInMinutes,
     status: app.status(),
     url: app.url
   };

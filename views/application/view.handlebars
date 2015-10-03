@@ -1,17 +1,17 @@
-<p>{{ app.description }}</p>
+{{> application/header app=app }}
 
 <div class="columns">
-  <div class="one-fifth column">
+  <div class="one-third column">
     {{> application/navigation activeItem="home" app=app }}
   </div>
-  <div class="four-fifths column">
+  <div class="two-thirds column">
     <div class="columns">
 
       <div class="full-width column">
         <h2>Facts</h2>
         <dl class="form">
           <dt><label>Access Token</label></dt>
-          <dd><input type="text" style="width: 100%;" class="input-block full-width" value="{{ app.token }}" readonly></dd>
+          <dd><input type="text" class="input-block full-width" value="{{ app.token }}" readonly></dd>
         </dl>
       </div>
 
@@ -27,9 +27,3 @@
     </div>
   </div>
 </div>
-
-<form action="/application/{{app.name}}/delete" method="post">
-  <div class="form-actions">
-    <input type="submit" class="btn btn-danger" value="Delete application" /
-  </div>
-</form>

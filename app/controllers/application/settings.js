@@ -17,4 +17,12 @@ module.exports = function() {
       });
     });
   });
+
+  app.post('/application/:name/settings', middlewares.passport, (req, res) => {
+    core.applicationManager.update(req.user.id, req.body, (err) => {
+      if(err) { return res.redirect('/500'); }
+
+      return res.redirect(`/application/${req.params.name}`);
+    });
+  });
 }

@@ -1,9 +1,59 @@
-<p>{{ app.description }}</p>
+{{> application/header app=app }}
 
 <div class="columns">
-  <div class="one-fifth column">
+  <div class="one-third column">
     {{> application/navigation activeItem="settings" app=app }}
   </div>
-  <div class="four-fifths column">
+  <div class="two-thirds column">
+    <h2>Update</h2>
+    <form action="/application/{{app.name}}/settings" method="post">
+      <input type="hidden" name="name" value="{{app.name}}" />
+
+      <dl class="form">
+        <dt><label>Display name</label></dt>
+        <dd><input class="full-width" required name="displayName" type="text" value="{{app.displayName}}"></dd>
+      </dl>
+
+      <dl class="form">
+        <dt><label>Description</label></dt>
+        <dd><input class="full-width" required name="description" type="text" value="{{app.description}}"></dd>
+      </dl>
+
+      <dl class="form">
+        <dt><label>Url</label></dt>
+        <dd><input class="full-width" required name="url" type="text" value="{{app.url}}"></dd>
+      </dl>
+
+      <dl class="form">
+        <dt><label>Minutes without a heartbeat before going into <span class="state state-merged">walking dead</span> mode</label></dt>
+        <dd><input required name="warnRetentionInMinutes" type="number" value="{{app.warnRetentionInMinutes}}"></dd>
+      </dl>
+
+      <dl class="form">
+        <dt><label>Minutes without a heartbeat before going into <span class="state state-closed">dead</span> mode</label></dt>
+        <dd><input required name="deadRetentionInMinutes" type="number" value="{{app.deadRetentionInMinutes}}"></dd>
+      </dl>
+
+      <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Update" />
+      </div>
+    </form>
+
+    <hr />
+
+    <h2>Dangerzone</h2>
+
+    <form action="/application/{{app.name}}/delete" method="post">
+      <dl class="form">
+        <div class="flash flash-error flash-with-icon">
+          <span class="octicon octicon-alert"></span>
+          <strong>Warning!</strong><br />
+          By clicking delete you will delete this app without further warnings!
+        </div>
+      </dl>
+      <div class="form-actions">
+        <input type="submit" class="btn btn-danger" value="Delete application" /
+      </div>
+    </form>
   </div>
 </div>
