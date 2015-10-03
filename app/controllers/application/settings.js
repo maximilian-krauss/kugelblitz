@@ -13,7 +13,7 @@ module.exports = function() {
 
       return res.render('application/settings', {
         slug: `${app.displayName} - Settings`,
-        app: app
+        app: app.toViewModel()
       });
     });
   });

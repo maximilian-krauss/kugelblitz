@@ -1,1 +1,16 @@
-<p>{{ app.description }}</p>
+<header class="application">
+  <h4>{{ app.description }} &mdash; <a href="{{app.url}}" target="_blank">{{app.url}}</a/></h4>
+
+  <p>
+    <span class="app-state state {{ app.status.cssClass }}">{{ app.status.text }}</span>
+
+    <span class="sub-line last-heartbeat" title="{{ app.lastHeartbeat }}">
+      <span class="octicon octicon-pulse"></span>
+      Last heartbeat: {{ app.lastHeartbeatText }}
+    </span>
+    <span class="sub-line last-error" title="{{ app.lastError }}">
+      <span class="octicon octicon-stop"></span>
+      Last error: {{ app.lastErrorText }}
+    </span>
+  </p>
+</header>

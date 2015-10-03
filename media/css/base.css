@@ -25,3 +25,8 @@ div.header {
 .full-width {
   width: 100%!important;
 }
+
+.sub-line {
+  color: #aaa;
+  margin-right: 5px;
+}

@@ -1,0 +1,7 @@
+header.application h4 {
+  margin-top: 0;
+}
+
+header.application .app-state {
+  margin-right: 10px;
+}

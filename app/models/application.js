@@ -117,6 +117,7 @@ ApplicationSchema.methods.toViewModel = function() {
 
   return {
     name: app.name,
+    token: app.token,
     displayName: app.displayName,
     description: app.description,
     lastError: app.lastError,
