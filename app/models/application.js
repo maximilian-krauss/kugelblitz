@@ -86,6 +86,18 @@ ApplicationSchema.methods.updateHeartbeat = function(cb) {
   app.save(cb);
 };
 
+ApplicationSchema.methods.insertReport = function(report, cb) {
+  var app = this;
+
+  if(report.type === 'error') {
+    app.lastError = Date.now();
+  }
+
+  app.events.push(report.id);
+
+  app.save(cb);
+};
+
 ApplicationSchema.methods.status = function() {
   let app = this,
       dead = { text: 'dead', cssClass: 'state-closed' },

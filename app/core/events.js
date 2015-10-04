@@ -1,6 +1,7 @@
 'use strict'
 
-var mongoose = require('mongoose');
+const _ = require('lodash'),
+      mongoose = require('mongoose');
 
 class EventManager {
   constructor(options) {
@@ -13,7 +14,15 @@ class EventManager {
       type, payload
   */
   create(appId, requestBody, cb) {
-    cb(new Error('Not implemented yet'));
+    let evnt = new this._event(_.extend(
+      requestBody,
+      {
+        owner: appId,
+        payload: JSON.parse(requestBody.payload)
+      }
+    ));
+
+    evnt.save(cb);
   }
 }
 

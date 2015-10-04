@@ -48,11 +48,16 @@ class ApplicationManager {
   }
 
   findAll(userId, cb) {
-    this._application.find({ owner: userId }, cb);
+    this._application
+      .find({ owner: userId })
+      .exec(cb);
   }
 
   findBy(userId, name, cb) {
-    this._application.findOne({ name: name, owner: userId }, cb);
+    this._application
+      .findOne({ name: name, owner: userId })
+      .populate('events')
+      .exec(cb);
   }
 
 }

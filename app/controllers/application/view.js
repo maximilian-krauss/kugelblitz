@@ -6,14 +6,14 @@ module.exports = function() {
         middlewares = this.middlewares;
 
   app.get('/application/:name', middlewares.passport, (req, res) => {
-    core.applicationManager.findBy(req.user.id, req.params.name, (err, app) => {
-      if(err || !app) {
+    core.applicationManager.findBy(req.user.id, req.params.name, (err, application) => {
+      if(err || !application) {
         return res.redirect('/404');
       }
 
       return res.render('application/view', {
-        slug: app.displayName,
-        app: app.toViewModel()
+        slug: application.displayName,
+        app: application.toViewModel()
       });
     });
   });
