@@ -80,6 +80,12 @@ ApplicationSchema.pre('save', function(next) {
   });
 });
 
+ApplicationSchema.methods.updateHeartbeat = function(cb) {
+  let app = this;
+  app.lastHeartbeat = Date.now();
+  app.save(cb);
+};
+
 ApplicationSchema.methods.status = function() {
   let app = this,
       dead = { text: 'dead', cssClass: 'state-closed' },
