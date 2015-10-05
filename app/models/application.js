@@ -1,10 +1,11 @@
 'use strict'
 
-var mongoose = require('mongoose'),
-    validate = require('mongoose-validate'),
-    crypto = require('crypto'),
-    moment = require('moment'),
-    ObjectId = mongoose.Schema.Types.ObjectId;
+const _ = require('lodash'),
+      mongoose = require('mongoose'),
+      validate = require('mongoose-validate'),
+      crypto = require('crypto'),
+      moment = require('moment'),
+      ObjectId = mongoose.Schema.Types.ObjectId;
 
 var ApplicationSchema = new mongoose.Schema({
   owner: {
@@ -124,12 +125,6 @@ ApplicationSchema.methods.status = function() {
   return dead;
 }
 
-function toTextDate(date) {
-  return date
-    ? moment(date).fromNow()
-    : 'never';
-}
-
 ApplicationSchema.methods.toViewModel = function() {
   let app = this;
 
@@ -139,13 +134,15 @@ ApplicationSchema.methods.toViewModel = function() {
     displayName: app.displayName,
     description: app.description,
     lastError: app.lastError,
-    lastErrorText: toTextDate(app.lastError),
     lastHeartbeat: app.lastHeartbeat,
-    lastHeartbeatText: toTextDate(app.lastHeartbeat),
     warnRetentionInMinutes: app.warnRetentionInMinutes,
     deadRetentionInMinutes: app.deadRetentionInMinutes,
     status: app.status(),
-    url: app.url
+    url: app.url,
+    events: _.chain(app.events)
+      .sortBy((e) => e.created)
+      .reverse()
+      .value()
   };
 };
 

@@ -29,11 +29,11 @@
       <p>
         <span class="sub-line last-heartbeat" title="{{ lastHeartbeat }}">
           <span class="octicon octicon-pulse"></span>
-          Last heartbeat: {{ lastHeartbeatText }}
+          Last heartbeat: {{ relativeDate lastHeartbeat }}
         </span>
         <span class="sub-line last-error" title="{{ lastError }}">
           <span class="octicon octicon-stop"></span>
-          Last error: {{ lastErrorText }}
+          Last error: {{ relativeDate lastError }}
         </span>
       </p>
     </li>

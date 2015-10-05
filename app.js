@@ -28,7 +28,7 @@ let hbs = exphbs.create({
   defaultLayout: 'main',
 
   partialsDir: 'views/partials/',
-  helpers: {
+  helpers: _.extend(require('./app/hbs-helpers'), {
     title: () => {
       return 'kugelblitz';
     },
@@ -38,7 +38,7 @@ let hbs = exphbs.create({
     js: (file) => {
       return bundles.js(file);
     }
-  }
+  })
 });
 
 let store = new MongoDBStore({

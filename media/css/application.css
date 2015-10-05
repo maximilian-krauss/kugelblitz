@@ -5,3 +5,27 @@ header.application h4 {
 header.application .app-state {
   margin-right: 10px;
 }
+
+ul.event-list {
+  padding-left: 0;
+}
+
+ul.event-list li {
+  list-style-type: none;
+  padding: 5px 10px;
+  line-height: 23px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+ul.event-list li:hover {
+  background: #ffe;
+}
+
+li.error .type.octicon:before {
+  content: '\f02d';
+}
+
+li.error .type {
+  color: #df3e3e;
+  margin-right: 6px;
+}
