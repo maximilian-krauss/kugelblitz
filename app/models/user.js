@@ -55,4 +55,20 @@ UserSchema.methods.comparePassword = function(password, cb) {
     });
 };
 
+UserSchema.methods.changePassword = function(currentPassword, newPassword, cb) {
+  var usr = this;
+
+  usr.comparePassword(currentPassword, (err, matched) => {
+    console.log(err, matched);
+    if(err || !matched) {
+      return cb(new Error('Old password does not match!'));
+    }
+
+    usr.password = newPassword;
+    return usr.save(cb);
+
+  });
+
+};
+
 module.exports = mongoose.model('User', UserSchema);

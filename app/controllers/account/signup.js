@@ -13,7 +13,7 @@ module.exports = function() {
   };
 
   app.get('/signup', _canSignup, (req, res) => {
-    res.render('signup', {
+    res.render('account/signup', {
       slug: 'Create a brand new account'
     });
   });
@@ -21,7 +21,7 @@ module.exports = function() {
   app.post('/signup', _canSignup, (req, res) => {
     core.userManager.create(req.body, (err, usr) => {
       if(err) {
-        return res.status(400).render('signup', { error: err.message });
+        return res.status(400).render('account/signup', { error: err.message });
       }
 
       res.redirect(301, '/login');

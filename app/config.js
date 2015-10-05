@@ -3,11 +3,16 @@
 const environment_token = 'KUGELBLITZ';
 
 class Configuration {
+
+  _readEnvironmentVariable(variable) {
+    return process.env[`${environment_token}_${variable}`];
+  }
+
   constructor() {
-    this._mongoUri = process.env[`${environment_token}_MONGO_URI`];
-    this._allowSignup = process.env[`${environment_token}_ALLOW_SIGNUP`] === 'true';
-    this._sessionSecret = process.env[`${environment_token}_SESSION_SECRET`];
-    this._cookieSecret = process.env[`${environment_token}_COOKIE_SECRET`];
+    this._mongoUri = this._readEnvironmentVariable('MONGO_URI');
+    this._allowSignup = this._readEnvironmentVariable('ALLOW_SIGNUP') === 'true';
+    this._sessionSecret = this._readEnvironmentVariable('SESSION_SECRET');
+    this._cookieSecret = this._readEnvironmentVariable('COOKIE_SECRET');
     this._production = process.env.NODE_ENV === 'production';
   }
 

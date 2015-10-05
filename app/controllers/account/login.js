@@ -10,7 +10,7 @@ module.exports = function() {
       return res.redirect('/');
     }
 
-    res.render('login', {
+    res.render('account/login', {
       slug: 'Login'
     });
   });
