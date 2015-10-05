@@ -1,6 +1,6 @@
 'use strict'
 
-const environment_token = 'MEERKAT';
+const environment_token = 'KUGELBLITZ';
 
 class Configuration {
   constructor() {

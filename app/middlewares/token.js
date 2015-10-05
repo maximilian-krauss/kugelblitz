@@ -17,7 +17,7 @@ let _validate = (token, cb) => {
 
 
 module.exports = (req, res, next) => {
-  let token = req.get('x-meerkat-token');
+  let token = req.get('x-kugelblitz-token');
   if(!token) {
     return res.status(401).send(response401);
   }

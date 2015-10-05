@@ -1,7 +1,7 @@
-meerkat
+kugelblitz
 ========
 
-meerkat is a web application logging and monitoring service.
+kugelblitz is a web application logging and monitoring service.
 
 **Why? ... because ...**
 

@@ -30,7 +30,7 @@ let hbs = exphbs.create({
   partialsDir: 'views/partials/',
   helpers: {
     title: () => {
-      return 'meerkat';
+      return 'kugelblitz';
     },
     css: (file) => {
       return bundles.css(file);
@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(require('express-session')({
-  name: 'meerkat.session.id',
+  name: 'kugelblitz.session.id',
   secret: config.sessionSecret,
   saveUninitialized: false,
   resave: false,
@@ -147,7 +147,7 @@ function fireAndForget() {
     const h = server.address().address;
     const p = server.address().port;
 
-    console.log('meerkat is literally up and running at http://%s:%s'.green, h, p); // Baxxter
+    console.log('kugelblitz is up and running at http://%s:%s'.green, h, p); // Baxxter
   });
 }
 

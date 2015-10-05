@@ -1,5 +1,5 @@
 {
-  "name": "meerkat",
+  "name": "kugelblitz",
   "version": "0.0.1",
   "description": "App logging and stuff",
   "main": "app.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maximilian-krauss/meerkat.git"
+    "url": "git+https://github.com/maximilian-krauss/kugelblitz.git"
   },
   "author": "Maximilian Krauß <max@krauss.io>",
   "license": "MIT",
   "engines" : { "node" : ">=4.1", "npm" : ">= 3.1" },
   "bugs": {
-    "url": "https://github.com/maximilian-krauss/meerkat/issues"
+    "url": "https://github.com/maximilian-krauss/kugelblitz/issues"
   },
-  "homepage": "https://github.com/maximilian-krauss/meerkat#readme",
+  "homepage": "https://github.com/maximilian-krauss/kugelblitz#readme",
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.0",
