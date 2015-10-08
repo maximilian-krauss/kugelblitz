@@ -1,0 +1,13 @@
+{{> application/header app=app }}
+
+<div class="columns">
+  <div class="one-third column">
+    {{> application/navigation activeItem="events" app=app }}
+  </div>
+  <div class="two-thirds column">
+    <div class="column full-width">
+      <h3>Events</h3>
+      {{> application/event-list app=app }}
+    </div>
+  </div>
+</div>

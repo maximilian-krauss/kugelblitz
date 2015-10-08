@@ -24,6 +24,19 @@ class EventManager {
 
     evnt.save(cb);
   }
+
+  findOneBy(id) {
+    return new Promise((rs, rj) => {
+      this._event.findOne({ _id: id })
+        .populate('owner')
+        .exec((err, doc) => {
+          return (err || !doc)
+            ? rj(err || new Error('Event not found'))
+            : rs(doc);
+        });
+    });
+  }
+
 }
 
 module.exports = EventManager;

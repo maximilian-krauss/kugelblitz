@@ -6,17 +6,23 @@ module.exports = function() {
         middlewares = this.middlewares;
 
   app.get('/application/:app/event/:event', middlewares.passport, (req, res) => {
-    core.applicationManager.findBy(req.user.id, req.params.app, (err, application) => {
-      if(err || !application) {
+    core.eventManager.findOneBy(req.params.event)
+      .then((evnt) => {
+        let application = evnt.owner;
+
+        if(!application.owner.equals(req.user.id)) {
+          return res.status(401).send();
+        }
+
+        return res.render('application/event', {
+          slug: `${application.displayName} - Event`,
+          app: application.toViewModel(),
+          event: evnt
+        });
+      })
+      .catch((err) => {
+        console.log(err);
         return res.redirect('/404');
-      }
-
-      res.render('application/event', {
-        slug: `${application.displayName} - Event`, 
-        app: application.toViewModel(),
-        event: null
       });
-
-    });
   });
 };

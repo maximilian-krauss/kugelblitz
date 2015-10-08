@@ -4,7 +4,23 @@
   <div class="one-third column">
     {{> application/navigation activeItem="events" app=app }}
   </div>
-  <div class="two-thirds column">
+  <div class="two-thirds column event {{event.type}}">
     <h2>Event</h2>
+    <p>
+      Type: {{ event.type }} <br />
+      Arrvied: <span title="{{event.created}}">{{ relativeDate event.created }}</span>
+    </p>
+
+    <hr />
+
+    <h3>Payload</h3>
+
+    {{#if_eq event.type 'error'}}
+      {{> event-types/error ../event }}
+    {{else}}
+      <p>Something else</p>
+    {{/if_eq}}
+
+
   </div>
 </div>

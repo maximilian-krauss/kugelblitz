@@ -17,33 +17,7 @@
 
       <div class="full-width column">
         <h2>Events</h2>
-        {{#if app.events}}
-          <ul class="event-list">
-            {{#each app.events}}
-              <li class="{{type}} clearfix">
-                <span class="type octicon"></span>
-
-                <a href="/application/{{../app.name}}/event/{{./id}}">Error event - Click to view</a>
-
-                <span class="sub-line" title="{{./created}}">
-                  {{ relativeDate ./created}}
-                </span>
-
-                <a href="/event/{{./id}}/delete" title="Delete event" class="btn btn-sm btn-danger iconbutton right">
-                  <span class="octicon octicon-x"></span>
-                </a>
-              </li>
-            {{/each}}
-          </ul>
-        {{else}}
-        <div class="full-width column">
-          <div class="blankslate">
-            <span class="mega-octicon octicon-alert"></span>
-            <h3>No events recorded</h3>
-            <p>Your application did not report any events to kugelblitz. Make sure it is setup correctly.</p>
-          </div>
-        </div>
-        {{/if}}
+        {{> application/event-list app=app }}
       </div>
 
     </div>
