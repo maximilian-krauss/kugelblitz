@@ -21,7 +21,6 @@ module.exports = function() {
         });
       })
       .catch((err) => {
-        console.log(err);
         return res.redirect('/404');
       });
   });

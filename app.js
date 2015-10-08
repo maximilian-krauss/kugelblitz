@@ -136,9 +136,9 @@ function injectDependenciesInto(items) {
 
 injectDependenciesInto(controllers);
 
-app.get('*', (req, res) => {
-  res.status(404).send({error: 'Not found'});
-});
+app.get('/401', (req, res) => { res.status(401).render('fuckups/401', { slug: 'HTTP 401' }); });
+app.get('/500', (req, res) => { res.status(500).render('fuckups/500', { slug: 'HTTP 500' }); });
+app.get('*', (req, res) => { res.status(404).render('fuckups/404', { slug: 'HTTP 404' }); });
 
 function fireAndForget() {
   const port = process.env.PORT || 8080;
