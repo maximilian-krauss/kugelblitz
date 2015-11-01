@@ -21,26 +21,26 @@
   "homepage": "https://github.com/maximilian-krauss/kugelblitz#readme",
   "dependencies": {
     "bcryptjs": "^2.3.0",
-    "body-parser": "^1.14.0",
-    "bower": "^1.5.3",
+    "body-parser": "^1.14.1",
+    "bower": "^1.6.5",
     "colors": "^1.1.2",
-    "compression": "^1.5.2",
+    "compression": "^1.6.0",
     "connect-assets": "^5.0.1",
     "connect-mongodb-session": "^1.0.5",
     "cookie-parser": "^1.4.0",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
-    "express-session": "^1.11.3",
+    "express-session": "^1.12.1",
     "lodash": "^3.10.1",
     "memory-cache": "^0.1.4",
     "moment": "^2.10.6",
-    "mongoose": "^4.1.8",
+    "mongoose": "^4.2.3",
     "mongoose-validate": "0.0.5",
     "morgan": "^1.6.1",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "require-directory": "^2.1.1",
-    "require-tree": "^1.0.1"
+    "require-tree": "^1.1.1"
   }
 }
