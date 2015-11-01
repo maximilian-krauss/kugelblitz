@@ -12,7 +12,20 @@ module.exports = function() {
         return res.status(500).send();
        }
 
-       res.send({ pong: true })
+      if(core.pingback.shouldICallBack(req.body)) {
+        core.pingback.ping(req.body.callback).then(result => {
+          core.metricManager.updateResponseTimeFor(req.app, result.responseTimeInMs)
+            .then(_ => res.send({ pong: true }))
+            .catch(_ => res.status(500).send());
+
+        }).catch(err => {
+          console.error('Failed to ping back:', err);
+          res.status(500).send();
+        });
+      }
+      else {
+        res.send({ pong: true });
+      }
     });
   });
 };
