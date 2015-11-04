@@ -11,7 +11,7 @@ module.exports = {
 	trim: (str) => {
 		return str
 			.replace(/^\s\s*/, '')
-			.replace(/\s\s*$/, '');	
+			.replace(/\s\s*$/, '');
 	},
 	if_eq: (left, right, options) => {
 		if (left == right) {
@@ -19,5 +19,8 @@ module.exports = {
     } else {
         return options.inverse(this);
     }
+	},
+	json: (obj) => {
+		return JSON.stringify(obj);
 	}
 };

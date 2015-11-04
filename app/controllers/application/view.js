@@ -11,10 +11,15 @@ module.exports = function() {
         return res.redirect('/404');
       }
 
-      return res.render('application/view', {
-        slug: application.displayName,
-        app: application.toViewModel()
-      });
+      core.metricManager.getMetricsFor(application.id)
+        .then(metrics => {
+          return res.render('application/view', {
+            slug: application.displayName,
+            app: application.toViewModel(),
+            metrics: metrics
+          });
+        })
+        .catch(err => { return res.redirect('/505') })
     });
   });
 };

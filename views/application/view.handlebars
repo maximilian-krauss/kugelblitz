@@ -16,6 +16,11 @@
       </div>
 
       <div class="full-width column">
+        <h2>Performance</h2>
+        <canvas id="app-metrics" width="550" height="250"></canvas>
+      </div>
+
+      <div class="full-width column">
         <h2>Events</h2>
         {{> application/event-list app=app }}
       </div>
@@ -23,3 +28,31 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  var data = {
+      labels: {{{ json metrics.labels }}},
+      datasets: [
+          {
+              label: "Response",
+              strokeColor: "#333",
+              pointColor: "#333",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              data: {{{ json metrics.data }}}
+          }
+      ]
+  };
+  var options = {
+      scaleShowGridLines : false,
+      bezierCurveTension : 0.3,
+      pointHitDetectionRadius : 5,
+      datasetStroke : true,
+      datasetFill : false,
+  };
+
+  var chartContext = document.getElementById("app-metrics").getContext("2d");
+  var myLineChart = new Chart(chartContext).Line(data, options);
+
+</script>
