@@ -16,14 +16,28 @@ class MetricManager {
 
   _mergeMetrics(metrics) {
     let result = {
-      labels: [],
-      data: []
+      responseTime: {
+        labels: [],
+        data: [],
+        average: 0
+      }
     };
+
+    let averageResponseTime = _(metrics)
+      .chain()
+      .map(m => m.responseTimeInMs)
+      .sum()
+      .value();
+
+    result.responseTime.average = metrics.length > 0
+      ? (averageResponseTime / metrics.length).toFixed(1)
+      : 0;
 
     for(let i = 13; i >= 0; i--) {
       let currentDate = moment().subtract(i, 'days');
-      result.labels.push(currentDate.format('MM/DD'));
-      result.data.push(_.result(_.find(metrics, {
+
+      result.responseTime.labels.push(currentDate.format('MM/DD'));
+      result.responseTime.data.push(_.result(_.find(metrics, {
         partitionKey: this._generatePartitionKeyFrom(currentDate)
       }), 'responseTimeInMs') || 0);
     }
