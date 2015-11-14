@@ -1,7 +1,7 @@
 {{#if app.events}}
 <ul class="event-list">
   {{#each app.events}}
-    <li class="{{type}} clearfix">
+    <li class="event {{type}} clearfix" data-id="{{id}}">
       <span class="type octicon"></span>
 
       <a href="/application/{{../app.name}}/event/{{./id}}">Error event - Click to view</a>
@@ -10,7 +10,7 @@
         {{ relativeDate ./created}}
       </span>
 
-      <a href="/event/{{./id}}/delete" title="Delete event" class="btn btn-sm btn-danger iconbutton right">
+      <a href="#" title="Delete event" class="delete btn btn-sm btn-danger iconbutton right">
         <span class="octicon octicon-x"></span>
       </a>
     </li>
@@ -25,3 +25,7 @@
   </div>
 </div>
 {{/if}}
+
+<script type="text/javascript">
+  eventList.attach();
+</script>

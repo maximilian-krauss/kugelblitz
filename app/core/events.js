@@ -37,6 +37,16 @@ class EventManager {
     });
   }
 
+  deleteBy(id) {
+    return new Promise((rs, rj) => {
+      this._event.findOne({_id: id})
+        .remove(err => {
+          if(err) return rj(err);
+          rs();
+        });
+    });
+  }
+
 }
 
 module.exports = EventManager;
