@@ -49,7 +49,7 @@ class MetricManager {
     return new Promise((rs, rj) => {
       this._metric.find({ owner: appId })
         .limit(14)
-        .sort({created: 1})
+        .sort({created: -1})
         .exec((err, docs) => {
           if(err) { return rj(err); }
 
