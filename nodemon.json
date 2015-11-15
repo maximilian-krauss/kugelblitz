@@ -1,0 +1,6 @@
+{
+  "watch": [ "./app" ],
+  "delay": 2.5,
+  "ext": "js",
+  "exec": "node app.js"
+}
